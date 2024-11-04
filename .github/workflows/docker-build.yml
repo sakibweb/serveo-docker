@@ -28,4 +28,4 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: yourusername/serveo-docker:latest
+        tags: sakibweb/serveo-docker:latest
