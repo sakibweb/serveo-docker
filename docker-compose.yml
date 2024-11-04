@@ -1,29 +1,37 @@
+name: serveo
 services:
-  app:
-    image: sakibweb/serveo-docker
+  serveo:
+    build:
+      context: /var/www/html/serveo
+      dockerfile: Dockerfile
+    cpu_shares: 90
+    command: []
+    container_name: serveo
     deploy:
       resources:
         limits:
-          cpus: '0.5'
+          cpus: "0.5"
           memory: 512M
-  serveo:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: serveo
-    restart: unless-stopped
-    privileged: true
-    tty: true
-    stdin_open: true
-    network_mode: host
     environment:
+      - CUSTOM_SUBDOMAIN=
       - LOCAL_HOST=localhost
       - LOCAL_PORT=80
       - REMOTE_PORT=80
-      - CUSTOM_SUBDOMAIN=
-      - SSH_USER=serveo.net
       - SSH_OPTIONS=
-
+      - SSH_USER=serveo.net
+    hostname: serveo
+    image: sakibweb/serveo-docker:latest
+    labels:
+      icon: https://cdn.prod.website-files.com/570ee6bc69f0b4976a747d2d/5aacf5bec776cc597f8e4126_Frame%202.png
+    privileged: true
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports: []
+    volumes: []
+    devices: []
+    cap_add: []
+    network_mode: host
 x-casaos:
   author: sakibweb
   category: Network
@@ -31,7 +39,8 @@ x-casaos:
   icon: https://cdn.prod.website-files.com/570ee6bc69f0b4976a747d2d/5aacf5bec776cc597f8e4126_Frame%202.png
   index: /
   is_uncontrolled: false
-  overview: Serveo provides a simple way to forward localhost ports to the public internet via SSH tunneling.
+  overview: Serveo provides a simple way to forward localhost ports to the public
+    internet via SSH tunneling.
   port_map: ""
   scheme: http
   screenshots:
