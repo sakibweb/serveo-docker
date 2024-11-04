@@ -1,0 +1,41 @@
+services:
+  serveo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: serveo
+    restart: unless-stopped
+    privileged: true
+    tty: true
+    stdin_open: true
+    network_mode: host
+    environment:
+      - LOCAL_HOST=localhost
+      - LOCAL_PORT=80
+      - REMOTE_PORT=80
+      - CUSTOM_SUBDOMAIN=
+      - SSH_USER=serveo.net
+      - SSH_OPTIONS=
+
+x-casaos:
+  author: sakibweb
+  category: Network
+  hostname: ""
+  icon: https://cdn.prod.website-files.com/570ee6bc69f0b4976a747d2d/5aacf5bec776cc597f8e4126_Frame%202.png
+  index: /
+  is_uncontrolled: false
+  overview: Serveo provides a simple way to forward localhost ports to the public internet via SSH tunneling.
+  port_map: ""
+  scheme: http
+  screenshots:
+    - https://cdn.jsdelivr.net/gh/sakibweb/CasaOS-SakibWeb@main/App/Ngrok/screenshot-1.png
+  store_app_id: serveo
+  tagline:
+    custom: Instantly access localhost through Serveo's secure SSH tunneling.
+  thumbnail: https://cdn.jsdelivr.net/gh/sakibweb/CasaOS-SakibWeb@main/App/Ngrok/thumbnail.png
+  tips:
+    custom: |-
+      Ensure SSH is configured for autossh tunneling.
+      Customize your domain, nginx configuration, and serveo settings as needed.
+  title:
+    custom: Serveo
