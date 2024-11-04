@@ -1,4 +1,11 @@
 services:
+  app:
+    image: sakibweb/serveo-docker
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
   serveo:
     build:
       context: .
